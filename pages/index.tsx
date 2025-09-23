@@ -10,10 +10,14 @@ const LoadingScreen = ({ isLoading }: { isLoading: boolean }) => {
   
   return (
     <div className="fixed inset-0 bg-[#5B2333] flex items-center justify-center z-50">
-      <div className="relative">
-        <div className="text-6xl font-bold text-[#F7F4F3] animate-pulse">S</div>
-        <div className="absolute inset-0 border-4 border-[#F24333] rounded-full animate-spin opacity-50"></div>
-      </div>
+<div className="relative w-24 h-24 flex items-center justify-center">
+  {/* Text */}
+  <div className="text-3xl font-bold text-[#F7F4F3] animate-pulse z-10">S</div>
+
+  {/* Hexagon border */}
+  <div className="absolute inset-0 border-4 border-[#F24333] opacity-50 animate-spin [clip-path:polygon(25%_5%,75%_5%,100%_50%,75%_95%,25%_95%,0%_50%)]"></div>
+</div>
+
     </div>
   );
 };
@@ -37,61 +41,82 @@ const Navigation = ({ activeSection, setActiveSection }: NavigationProps) => {
   ];
 
   return (
- <nav className="fixed top-0 left-0 right-0 bg-[#5B2333]/95 backdrop-blur-sm z-40 border-b border-[#564D4A]">
-      <div className="max-w-6xl mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <div className="text-2xl font-bold text-[#F7F4F3]">SG</div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setActiveSection(item.id)}
-                className={`text-md font-medium transition-colors ${
-                  activeSection === item.id
-                    ? "text-[#F24333]"
-                    : "text-[#F7F4F3] hover:text-[#F24333]"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile Hamburger */}
-          <button
-            className="md:hidden text-[#F7F4F3] focus:outline-none"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {menuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
+ <nav className="p-2 top-0 fixed  left-0 right-0  bg-[#5B2333]/90 backdrop-blur-lg z-50 border-b border-[#564D4A]/50 shadow-lg">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-16">
+      {/* Logo */}
+      <div className="text-2xl font-bold bg-gradient-to-r from-[#F24333] to-[#F7F4F3] bg-clip-text text-transparent">
+        SG
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {menuOpen && (
-        <div className="md:hidden bg-[#5B2333]/95 border-t border-[#564D4A] px-6 py-4 space-y-4">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => {
-                setActiveSection(item.id);
-                setMenuOpen(false);
-              }}
-              className={`block w-full text-left text-lg font-medium transition-colors ${
-                activeSection === item.id
-                  ? "text-[#F24333]"
-                  : "text-[#F7F4F3] hover:text-[#F24333]"
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-      )}
-    </nav>
+      {/* Desktop Menu */}
+      <div className="hidden md:flex items-center space-x-8">
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => setActiveSection(item.id)}
+            className={`relative text-sm font-medium transition-all duration-300 ${
+              activeSection === item.id
+                ? "text-[#F24333]"
+                : "text-[#F7F4F3] hover:text-[#F24333]"
+            }`}
+          >
+            {item.label}
+            {/* Animated underline */}
+            <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-[#F24333] transition-all duration-300 ${
+              activeSection === item.id ? "w-full" : "group-hover:w-full"
+            }`} />
+          </button>
+        ))}
+        {/* CTA Button */}
+
+      </div>
+
+      {/* Mobile Hamburger */}
+      <button
+        className="md:hidden text-[#F7F4F3] hover:text-[#F24333] transition-colors duration-300 p-2 rounded-lg hover:bg-[#5B2333]/50"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        {menuOpen ? (
+          <div className="w-6 h-6 relative">
+            <div className="absolute top-1/2 left-1/2 w-5 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 rotate-45" />
+            <div className="absolute top-1/2 left-1/2 w-5 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 -rotate-45" />
+          </div>
+        ) : (
+          <div className="w-6 h-6 flex flex-col justify-between">
+            <div className="w-full h-0.5 bg-current" />
+            <div className="w-full h-0.5 bg-current" />
+            <div className="w-full h-0.5 bg-current" />
+          </div>
+        )}
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile Menu Dropdown */}
+  {menuOpen && (
+    <div className="md:hidden bg-[#5B2333]/95 backdrop-blur-lg border-t border-[#564D4A]/50 px-6 py-4 space-y-3 animate-in slide-in-from-top duration-300">
+      {navItems.map((item) => (
+        <button
+          key={item.id}
+          onClick={() => {
+            setActiveSection(item.id);
+            setMenuOpen(false);
+          }}
+          className={`block w-full text-left py-3 px-4 text-base font-medium rounded-lg transition-all duration-300 ${
+            activeSection === item.id
+              ? "text-[#F24333] bg-[#564D4A]/30"
+              : "text-[#F7F4F3] hover:text-[#F24333] hover:bg-[#564D4A]/20"
+          }`}
+        >
+          {item.label}
+        </button>
+      ))}
+      {/* Mobile CTA Button */}
+     
+    </div>
+  )}
+</nav>
   );
 };
 
@@ -114,7 +139,7 @@ const HeroSection = () => (
     </div>
     
     <div className="text-center z-10 px-6">
-      <h1 className="text-6xl md:text-8xl font-bold text-[#F7F4F3] mb-6">
+      <h1 className="text-6xl md:text-8xl font-bold text-[#F7F4F3] mb-4">
         Salome Githinji
       </h1>
       <p className="text-xl md:text-2xl text-[#564D4A] mb-8 max-w-2xl mx-auto">
@@ -134,52 +159,155 @@ const HeroSection = () => (
 
 // About Section
 const AboutSection = () => (
-  <section className="py-20 px-6">
+  <section className="py-24 px-6 relative overflow-hidden">
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold text-[#F7F4F3] mb-12 text-center">About Me</h2>
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <div className="w-80 h-80 bg-[#564D4A] rounded-lg mx-auto mb-6 flex items-center justify-center">
-            <span className="text-[#F7F4F3] text-lg">Your Photo Here</span>
+      <div className="text-center mb-16">
+        <h2 className="text-5xl font-bold text-[#F7F4F3] mb-4 bg-gradient-to-r from-[#F7F4F3] via-[#F24333] to-[#F7F4F3] bg-clip-text text-transparent">
+          About Me
+        </h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-[#F24333] to-[#564D4A] mx-auto rounded-full"></div>
+      </div>
+      
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Image Section */}
+        <div className="relative group">
+          <div className="relative w-80 h-80 mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#F24333] to-[#564D4A] rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-all duration-500"></div>
+            <div className="relative w-full h-full bg-[#564D4A] rounded-2xl flex items-center justify-center border-2 border-[#564D4A]/50 group-hover:border-[#F24333]/30 transition-all duration-500">
+              <span className="text-[#F7F4F3] text-lg font-medium">Your Photo Here</span>
+            </div>
           </div>
         </div>
-        <div className="space-y-6">
-          <p className="text-[#F7F4F3] text-lg leading-relaxed">
-            Results-driven Software Engineer with expertise in full-stack development and IT support. 
-            I&apos;m passionate about leveraging technology to create innovative solutions that solve real-world problems.
-          </p>
-          <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <MapPin className="w-5 h-5 text-[#F24333]" />
+
+        {/* Content Section */}
+        <div className="space-y-8">
+          <div className="text-[#F7F4F3] text-lg leading-relaxed space-y-6">
+            {/* Intro paragraph */}
+            <p className="text-xl leading-8">
+              I&apos;m a Software Engineer with expertise in building responsive, user-friendly full stack web applications using 
+              <span className="font-semibold text-[#38bdf8]"> React.js</span>, 
+              <span className="font-semibold text-[#38bdf8]"> Next.js</span>,
+              <span className="font-semibold text-[#38bdf8]"> Django</span>, and 
+              <span className="font-semibold text-[#38bdf8]"> Tailwind CSS</span>. 
+              I love crafting seamless digital experiences that make ideas and designs come alive.
+            </p>
+
+            {/* Background section */}
+            <div className="bg-[#564D4A]/20 p-6 rounded-2xl border-l-4 border-[#F24333]">
+              <h2 className="text-xl font-bold mb-4 text-[#E0E0E0]">Background:</h2>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-[#F24333] mr-3 mt-1">•</span>
+                  Skilled in React.js, Next.js, Tailwind CSS, and modern frontend tools.
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#F24333] mr-3 mt-1">•</span>
+                  Experience with backend development using Django and RESTful APIs.
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#F24333] mr-3 mt-1">•</span>
+                  Strong understanding of responsive design and cross-browser compatibility.
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#F24333] mr-3 mt-1">•</span>
+                  Committed to writing clean, maintainable, and well-documented code.
+                </li>
+              </ul>
+            </div>
+
+            {/* Closing paragraph */}
+            <p className="text-xl leading-8 italic border-l-4 border-[#38bdf8] pl-4 py-2">
+              When not coding, I enjoy shooting hoops 🏀, reading 📚, and hiking Kenya&apos;s stunning trails 🥾🏔️ 
+              adventures that keep me energized and inspired!
+            </p>
+          </div>
+
+          {/* Contact Info */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="flex items-center space-x-3 p-3 bg-[#564D4A]/20 rounded-lg hover:bg-[#564D4A]/30 transition-all duration-300">
+              <MapPin className="w-5 h-5 text-[#F24333] flex-shrink-0" />
               <span className="text-[#F7F4F3]">Nairobi, Kenya</span>
             </div>
-            <div className="flex items-center space-x-3">
-              <Phone className="w-5 h-5 text-[#F24333]" />
+            <div className="flex items-center space-x-3 p-3 bg-[#564D4A]/20 rounded-lg hover:bg-[#564D4A]/30 transition-all duration-300">
+              <Phone className="w-5 h-5 text-[#F24333] flex-shrink-0" />
               <span className="text-[#F7F4F3]">+254742466933</span>
             </div>
-            <div className="flex items-center space-x-3">
-              <Mail className="w-5 h-5 text-[#F24333]" />
+            <div className="flex items-center space-x-3 p-3 bg-[#564D4A]/20 rounded-lg hover:bg-[#564D4A]/30 transition-all duration-300 col-span-1 sm:col-span-2">
+              <Mail className="w-5 h-5 text-[#F24333] flex-shrink-0" />
               <span className="text-[#F7F4F3]">sallygithinji72@gmail.com</span>
             </div>
           </div>
           
+          {/* Skills Section */}
           <div className="pt-6">
-            <h3 className="text-xl font-semibold text-[#F7F4F3] mb-4">Skills</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <h4 className="text-[#F24333] font-medium mb-2">Languages</h4>
-                <ul className="text-[#F7F4F3] space-y-1 text-sm">
-                  <li>Python</li>
-                  <li>JavaScript (ES6+)</li>
-                  <li>TypeScript</li>
+            <h3 className="text-2xl font-bold text-[#F7F4F3] mb-6 text-center">Skills & Technologies</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-[#564D4A]/20 p-5 rounded-2xl hover:bg-[#564D4A]/30 transition-all duration-300">
+                <h4 className="text-[#F24333] font-semibold mb-3 text-lg">Languages</h4>
+                <ul className="text-[#F7F4F3] space-y-2">
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    Python
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    JavaScript (ES6+)
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    TypeScript
+                  </li>
                 </ul>
               </div>
-              <div>
-                <h4 className="text-[#F24333] font-medium mb-2">Frameworks</h4>
-                <ul className="text-[#F7F4F3] space-y-1 text-sm">
-                  <li>Django/DRF</li>
-                  <li>React.js/Next.js</li>
-                  <li>Express.js</li>
+              <div className="bg-[#564D4A]/20 p-5 rounded-2xl hover:bg-[#564D4A]/30 transition-all duration-300">
+                <h4 className="text-[#F24333] font-semibold mb-3 text-lg">Frameworks</h4>
+                <ul className="text-[#F7F4F3] space-y-2">
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    Django/DRF
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    React.js/Next.js
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    Express.js
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-[#564D4A]/20 p-5 rounded-2xl hover:bg-[#564D4A]/30 transition-all duration-300">
+                <h4 className="text-[#F24333] font-semibold mb-3 text-lg">Tools & Platforms</h4>
+                <ul className="text-[#F7F4F3] space-y-2">
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    Git/GitHub
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    Docker
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    AWS
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    Google Cloud
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-[#564D4A]/20 p-5 rounded-2xl hover:bg-[#564D4A]/30 transition-all duration-300">
+                <h4 className="text-[#F24333] font-semibold mb-3 text-lg">Databases</h4>
+                <ul className="text-[#F7F4F3] space-y-2">
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    PostgreSQL
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    SQLite
+                  </li>
                 </ul>
               </div>
             </div>
@@ -188,7 +316,7 @@ const AboutSection = () => (
       </div>
     </div>
     <Particles
-      className="absolute inset-0"
+      className="absolute inset-0 -z-10"
       quantity={50}
       ease={100}
       staticity={100}
