@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from "lucide-react"; 
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import BlogSection from './components/sections/BlogSection';
 import { Particles } from "@/components/ui/shadcn-io/particles/index";
 
-import { Github, ExternalLink, Mail, MapPin, Phone, FileText, Award, BookOpen } from 'lucide-react';
+import { Github, ExternalLink, Mail, MapPin, Phone, FileText, Award, BookOpen,ArrowRight } from 'lucide-react';
 
 // Loading Component with S Icon
 const LoadingScreen = ({ isLoading }: { isLoading: boolean }) => {
@@ -138,21 +140,41 @@ const HeroSection = () => (
       ))}
     </div>
     
-    <div className="text-center z-10 px-6">
-      <h1 className="text-6xl md:text-8xl font-bold text-[#F7F4F3] mb-4">
+<div className="text-center z-10 px-6">
+      {/* Animated Name */}
+      <motion.h1
+        className="text-6xl md:text-8xl font-bold text-[#F7F4F3] mb-4"
+        initial={{ y: 80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         Salome Githinji
-      </h1>
-      <p className="text-xl md:text-2xl text-[#564D4A] mb-8 max-w-2xl mx-auto">
-        Software Engineer crafting innovative solutions with full-stack expertise
-      </p>
-      <div className="flex justify-center space-x-4">
+      </motion.h1>
+
+      {/* Animated Subtitle */}
+      <motion.p
+        className="text-xl md:text-2xl text-[#d49d8b] mb-8 max-w-2xl mx-auto"
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+      >
+          Building digital solutions that transform ideas into reality
+      </motion.p>
+
+      {/* Animated Buttons */}
+      <motion.div
+        className="flex justify-center space-x-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+      >
         <button className="bg-[#F24333] text-[#F7F4F3] px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-all">
           Get Resume
         </button>
         <button className="border border-[#F24333] text-[#F24333] px-8 py-3 rounded-lg font-medium hover:bg-[#F24333] hover:text-[#F7F4F3] transition-all">
           Contact Me
         </button>
-      </div>
+      </motion.div>
     </div>
   </section>
 );
@@ -160,6 +182,19 @@ const HeroSection = () => (
 // About Section
 const AboutSection = () => (
   <section className="py-24 px-6 relative overflow-hidden">
+        <div className="absolute inset-0">
+      {[...Array(50)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute w-1 h-1 bg-[#F7F4F3] opacity-20 animate-pulse"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 2}s`
+          }}
+        />
+      ))}
+    </div>
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-16">
         <h2 className="text-5xl font-bold text-[#F7F4F3] mb-4 bg-gradient-to-r from-[#F7F4F3] via-[#F24333] to-[#F7F4F3] bg-clip-text text-transparent">
@@ -247,15 +282,15 @@ const AboutSection = () => (
                 <ul className="text-[#F7F4F3] space-y-2">
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
-                    Python
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
                     JavaScript (ES6+)
                   </li>
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
-                    TypeScript
+                    Typescript
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    Python
                   </li>
                 </ul>
               </div>
@@ -329,58 +364,163 @@ const AboutSection = () => (
 // Projects Section
 const ProjectsSection = () => {
   const projects = [
+   
     {
+      title: "HonorHub",
+      description: "Platform for families to create digital memorials, preserving legacies through shared stories.(In progress)",
+      tech: ["React", "Tailwind CSS", "TypeScript"],
+      github: "https://github.com/salome/honorhub",
+      live: "https://honorhub.netlify.app/",
+      image: "/images/image.png"
+    },
+    {
+      title: "KCNA Quiz App",
+      description: "Interactive quiz app to test knowledge of Kubernetes concepts and best practices",
+      tech: ["React", "Tailwind CSS", "TypeScript"],
+      github: "https://github.com/Salomegit/kcna-prep-app",
+      live: "https://kcna-quiz-app.netlify.app/",
+      image: "/images/kcna.png"
+    },
+    {
+      title: "Money Transfer API",
+      description: "The API allows for the creation of accounts with a specified balance, retrieving account details by account ID, and transferring money between accounts.",
+      tech: ["Django", "DRF", "SQLite"],
+      github: "https://github.com/Salomegit/Money-Transfer",
+      live: null,
+      image: "/images/money.png"
+    },
+    {
+      title: "Chapati Planner",
+      description: " A fun and interactive Web app to help users plan and manage their chapatis for guests",
+      tech: ["React", "Tailwind CSS", "TypeScript"],
+      github: "https://chapo-party-planner.lovable.app/",
+      live: "https://chapo-party-planner.lovable.app/",
+      image: "/images/chapo.png"
+    },
+   {
+
+       
       title: "Employee Recruitment Management System",
       description: "Full-stack recruitment system to streamline hiring processes",
       tech: ["Django", "HTML/CSS", "SQLite"],
-      github: "https://github.com/salome",
-      live: "https://fouriqtechnologies-employee-recruitment.onrender.com"
+      github: "https://github.com/Salomegit/Employee_Recruitment",
+      live: "https://fouriqtechnologies-employee-recruitment.onrender.com/employee/base",
+      // Add image paths for project previews
+      image: "/images/employee.png"
     },
-    {
-      title: "HonorHub",
-      description: "Platform for families to create digital memorials, preserving legacies through shared stories",
-      tech: ["React", "Tailwind CSS", "TypeScript"],
-      github: "https://github.com/salome/honorhub",
-      live: null
-    }
+    
   ];
 
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="text-4xl font-bold text-[#F7F4F3]">Projects</h2>
-          <button className="flex items-center space-x-2 text-[#F24333] hover:text-[#F7F4F3] transition-colors">
-            <Github className="w-5 h-5" />
-            <span>View All on GitHub</span>
-          </button>
+    <section className="py-20 px-6 bg-gradient-to-b from-[#5B2333] to-[#5B2333]">
+      <div className="max-w-7xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold text-[#F7F4F3] mb-4 bg-gradient-to-r from-[#F7F4F3] to-[#F24333] bg-clip-text text-transparent">
+            Featured Projects
+          </h2>
+          <p className="text-[#F7F4F3] opacity-70 text-lg max-w-2xl mx-auto">
+            Showcasing my journey through innovative web solutions and modern technologies
+          </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <div key={index} className="bg-[#564D4A] rounded-lg p-6 hover:bg-opacity-80 transition-all">
-              <h3 className="text-xl font-semibold text-[#F7F4F3] mb-3">{project.title}</h3>
-              <p className="text-[#F7F4F3] opacity-80 mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map(tech => (
-                  <span key={tech} className="bg-[#F24333] text-[#F7F4F3] px-3 py-1 rounded-full text-sm">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex space-x-4">
-                <a href={project.github} className="flex items-center space-x-1 text-[#F24333] hover:text-[#F7F4F3] transition-colors">
-                  <Github className="w-4 h-4" />
-                  <span>Code</span>
-                </a>
-                {project.live && (
-                  <a href={project.live} className="flex items-center space-x-1 text-[#F24333] hover:text-[#F7F4F3] transition-colors">
-                    <ExternalLink className="w-4 h-4" />
-                    <span>Live</span>
-                  </a>
-                )}
-              </div>
-            </div>
+
+        {/* Projects Grid */}
+<div className="grid lg:grid-cols-2 gap-10">
+  {projects.map((project, index) => (
+    <div 
+      key={index}
+      className="group relative bg-[#564D4A] rounded-2xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 shadow-2xl hover:shadow-2xl hover:shadow-[#F24333]/20"
+    >
+      {/* Project Image Preview - Now occupies half the card */}
+      <div className="relative h-64 overflow-hidden bg-gradient-to-br from-[#F24333]/10 to-[#564D4A]">
+        {/* Remove the overlay gradient to make image clearer */}
+        <div className="w-full h-full flex items-center justify-center">
+          {/* Actual project image - larger and clearer */}
+          <Image
+            src={project.image}
+            alt={project.title}
+            width={400}
+            height={256}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            priority={index === 0}
+          />
+        </div>
+        
+        {/* Live Demo Badge on Image */}
+        {project.live && (
+          <div className="absolute top-4 right-4 flex items-center space-x-1 bg-[#F24333] text-[#F7F4F3] px-3 py-1.5 rounded-full text-sm font-medium z-20">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+            <span>Live</span>
+          </div>
+        )}
+      </div>
+
+      {/* Project Content - Now takes the other half */}
+      <div className="p-8 relative z-20">
+        {/* Project Header */}
+        <div className="flex items-start justify-between mb-4">
+          <h3 className="text-2xl font-bold text-[#F7F4F3] group-hover:text-[#F24333] transition-colors duration-300 pr-4">
+            {project.title}
+          </h3>
+        </div>
+
+        {/* Description */}
+        <p className="text-[#F7F4F3] opacity-80 mb-6 leading-relaxed">
+          {project.description}
+        </p>
+
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.tech.map((tech, techIndex) => (
+            <span 
+              key={tech}
+              className="bg-[#F24333] text-[#F7F4F3] px-3 py-1.5 rounded-full text-sm font-medium hover:bg-[#F7F4F3] hover:text-[#F24333] transition-all duration-300 cursor-default"
+              style={{
+                animationDelay: `${techIndex * 100}ms`
+              }}
+            >
+              {tech}
+            </span>
           ))}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex space-x-4 pt-4 border-t border-[#F7F4F3]/20">
+          <a 
+            href={project.github}
+            className="flex items-center space-x-2 bg-[#F24333] text-[#F7F4F3] px-6 py-3 rounded-lg hover:bg-[#F7F4F3] hover:text-[#F24333] transition-all duration-300 font-medium group/btn"
+          >
+            <Github className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+            <span>View Code</span>
+          </a>
+          {project.live && (
+            <a 
+              href={project.live}
+              className="flex items-center space-x-2 border-2 border-[#F24333] text-[#F24333] px-6 py-3 rounded-lg hover:bg-[#F24333] hover:text-[#F7F4F3] transition-all duration-300 font-medium group/btn"
+            >
+              <ExternalLink className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+              <span>Live Demo</span>
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* Hover Effect Border */}
+      <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#F24333] transition-all duration-300 pointer-events-none" />
+    </div>
+  ))}
+</div>
+
+        {/* GitHub CTA */}
+        <div className="text-center mt-16">
+          <a 
+            href="https://github.com/salome"
+            className="inline-flex items-center space-x-3 bg-[#564D4A] hover:bg-[#F24333] text-[#F7F4F3] px-8 py-4 rounded-xl hover:transform hover:scale-105 transition-all duration-300 font-semibold group/cta"
+          >
+            <Github className="w-6 h-6 group-hover/cta:scale-110 transition-transform" />
+            <span>Explore All Projects on GitHub</span>
+            <ArrowRight className="w-5 h-5 group-hover/cta:translate-x-1 transition-transform" />
+          </a>
         </div>
       </div>
     </section>
@@ -399,16 +539,11 @@ const BlogsSection = () => (
         </button>
       </div>
       <div className="grid md:grid-cols-3 gap-8">
-        {[1, 2, 3].map(i => (
-          <div key={i} className="bg-[#564D4A] rounded-lg p-6 hover:bg-opacity-80 transition-all cursor-pointer">
-            <div className="w-full h-48 bg-[#5B2333] rounded-lg mb-4 flex items-center justify-center">
-              <span className="text-[#F7F4F3]">Blog Image</span>
-            </div>
-            <h3 className="text-lg font-semibold text-[#F7F4F3] mb-2">Blog Title {i}</h3>
-            <p className="text-[#F7F4F3] opacity-80 text-sm">Blog excerpt goes here...</p>
-          </div>
-        ))}
-      </div>
+  <BlogSection 
+          hostname="githinji-dev.hashnode.dev" 
+          limit={6}
+          title="Featured Articles"
+        />      </div>
     </div>
   </section>
 );
