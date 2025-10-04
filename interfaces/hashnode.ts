@@ -1,38 +1,33 @@
+// interfaces/hashnode.ts
+
+export interface HashnodeTag {
+  name: string;
+  slug: string;
+}
+
+export interface HashnodeCoverImage {
+  url: string;
+}
+
 export interface HashnodePost {
   id: string;
   title: string;
   brief: string;
-  slug: string;
   publishedAt: string;
-  coverImage?: {
-    url: string;
-  };
-  tags: {
-    name: string;
-    slug: string;
-  }[];
-  author: {
-    name: string;
-    profilePicture?: string;
-  };
   readTimeInMinutes: number;
   url: string;
+  coverImage?: HashnodeCoverImage;
+  tags?: HashnodeTag[];
 }
 
-export interface HashnodeResponse {
-  data: {
-    publication: {
-      id: string;
-      title: string;
-      displayTitle: string;
-      descriptionSEO: string;
-      posts: {
-        edges: {
-          node: HashnodePost;
-        }[];
-      };
-    };
-  };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  errors?: any[];
+// Optional: If you want to add author information later
+export interface HashnodeAuthor {
+  name: string;
+  profilePicture?: string;
+  username: string;
+}
+
+// Extended version with author (optional)
+export interface HashnodePostWithAuthor extends HashnodePost {
+  author: HashnodeAuthor;
 }
