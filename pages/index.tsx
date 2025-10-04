@@ -754,10 +754,7 @@ const ContactSection = () => (
           <Mail className="w-5 h-5" />
           <span>Get In Touch</span>
         </a>
-        <a href="tel:+254742466933" className="border border-[#F24333] text-[#F24333] px-8 py-4 rounded-lg font-medium hover:bg-[#F24333] hover:text-[#F7F4F3] transition-all flex items-center space-x-2">
-          <Phone className="w-5 h-5" />
-          <span>Call Me</span>
-        </a>
+       
       </div>
 
     </div>
