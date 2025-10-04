@@ -16,19 +16,22 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
     });
   };
 
+    const coverImageUrl = post.coverImage?.url || '/images/cloud.jpg';
+
+
   return (
     <article className="bg-[#564D4A] rounded-2xl border border-[#564D4A] overflow-hidden hover:shadow-2xl transition-all duration-500 group hover:border-[#F24333]/30">
-      {post.coverImage?.url && (
+      
         <div className="relative h-52 overflow-hidden">
           <Image 
-            src={post.coverImage.url} 
+            src={coverImageUrl} 
             alt={post.title}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
         </div>
-      )}
+      
       
       <div className="p-7">
         <div className="flex items-center gap-4 text-sm text-[#888888] mb-4">

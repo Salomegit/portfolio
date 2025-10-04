@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Cloud, Container, Shield } from 'lucide-react';
-import ContactUs from './components/ContactUs.json';
+import ContactUs from '../components_ui/ContactUs.json';
 import Lottie from 'lottie-react';
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import BlogSection from './components/sections/BlogSection';
+import BlogSection from '../components_ui/sections/BlogSection';
 import { Particles } from "@/components/ui/shadcn-io/particles/index";
 
 import { Github, ExternalLink, Mail, MapPin, Phone, FileText, ArrowRight } from 'lucide-react';

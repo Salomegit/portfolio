@@ -100,7 +100,7 @@ const BLOG_POSTS: HashnodePost[] = [
     brief: 'Imagine your EC2 instance suddenly hits more than 80% CPU usage. Is it a hacker? A bug? Without monitoring, you’d never know.',
     publishedAt: '2023-12-15',
     readTimeInMinutes: 9,
-    url: '/images/cloud.jpg',
+    url: 'https://githinjisal-dev.hashnode.dev/ec2-on-watch-real-time-cpu-alerts-with-cloudwatch-sns-in-4-simple-steps',
     coverImage: {
       url: '/images/cloud.jpg'
     },
@@ -112,9 +112,7 @@ const BLOG_POSTS: HashnodePost[] = [
   }
 ];
 
-const BlogSection: React.FC<BlogSectionProps> = ({ 
-  title = "Latest Blog Posts" 
-}) => {
+const BlogSection: React.FC<BlogSectionProps> = () => {
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-[#5B2333] to-[#5B2333]">
       <div className="max-w-7xl mx-auto">
@@ -166,7 +164,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {BLOG_POSTS.map((post, index) => (
             <div 
-              key={post.title} 
+              key={post.id} 
               className="transform hover:-translate-y-2 transition-transform duration-500"
               style={{ animationDelay: `${index * 100}ms` }}
             >

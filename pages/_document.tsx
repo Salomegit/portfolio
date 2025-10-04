@@ -4,9 +4,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>Salome Githinji | Portfolio</title>
-                <link rel="icon" href="/images/icon.jpg" /> {/* Remove this to remove icon */}
-
+        {/* Remove <title> from here - only keep meta tags and links */}
+        <link rel="icon" href="/images/icon.jpg" />
       </Head>
       <body className="antialiased">
         <Main />
