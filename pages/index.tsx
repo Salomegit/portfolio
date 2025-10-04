@@ -497,13 +497,16 @@ const ProjectsSection = () => {
 
                 {/* Action Buttons */}
                 <div className="flex space-x-4 pt-4 border-t border-[#F7F4F3]/20">
-                  <a
+                  {project.github && (
+ <a
                     href={project.github}
                     className="flex items-center space-x-2 bg-[#F24333] text-[#F7F4F3] px-6 py-3 rounded-lg hover:bg-[#F7F4F3] hover:text-[#F24333] transition-all duration-300 font-medium group/btn"
                   >
                     <Github className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
                     <span>View Code</span>
                   </a>
+                  )}
+                 
                   {project.live && (
                     <a
                       href={project.live}
