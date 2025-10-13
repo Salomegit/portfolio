@@ -393,6 +393,14 @@ const ProjectsSection = () => {
       image: "/images/kcna.png"
     },
     {
+      title: "Graphic Design for Predict AI",
+      description: "A design template to advertise Predict AI services",
+      tech: ["Canva"],
+      github: null,
+      live: "https://drive.google.com/file/d/1UniLbAIdw6LF308Ed07QHKkRpj5A30Jw/view?usp=sharing",
+      image: "/images/predictai.png"
+    },
+    {
       title: "Money Transfer API",
       description: "The API allows for the creation of accounts with a specified balance, retrieving account details by account ID, and transferring money between accounts.",
       tech: ["Django", "DRF", "SQLite"],
