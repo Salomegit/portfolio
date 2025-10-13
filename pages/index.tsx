@@ -398,7 +398,7 @@ const ProjectsSection = () => {
       tech: ["Canva"],
       github: null,
       live: "https://drive.google.com/file/d/1UniLbAIdw6LF308Ed07QHKkRpj5A30Jw/view?usp=sharing",
-      image: "/images/predictai.png"
+      image: "/images/predictai.jpg"
     },
     {
       title: "Money Transfer API",
