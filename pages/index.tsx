@@ -423,7 +423,7 @@ const ProjectsSection = () => {
       description: "Full-stack recruitment system to streamline hiring processes",
       tech: ["Django", "HTML/CSS", "SQLite"],
       github: "https://github.com/Salomegit/Employee_Recruitment",
-      live: "https://fouriqtechnologies-employee-recruitment.onrender.com/employee/base",
+      live: "https://fouriqtechnologies-employee-recruitment.onrender.com/",
       // Add image paths for project previews
       image: "/images/employee.png"
     },
