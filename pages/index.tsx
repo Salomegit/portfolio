@@ -389,7 +389,7 @@ const ProjectsSection = () => {
       description: "Interactive quiz app to test knowledge of Kubernetes concepts and best practices",
       tech: ["React", "Tailwind CSS", "TypeScript"],
       github: "https://github.com/Salomegit/kcna-prep-app",
-      live: "https://kcna-quiz-app.netlify.app/",
+      live: "https://kcna-exam-practice.vercel.app/",
       image: "/images/kcna.png"
     },
     {
