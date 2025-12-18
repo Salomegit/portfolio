@@ -693,14 +693,14 @@ const CERTIFICATES: Certificate[] = [
     description: 'Proffessional skills and workplace readiness'
   },
   {
-    {
+    
   id: '5',
   name: 'ProDev Front-End Software Engineering',
   issuer: 'ALX Africa',
   date: '2025',
   url: 'https://drive.google.com/file/d/1K-hr9xE5_qtIPl9fTde74Imd97cpWtTs/view?usp=sharing',
   description: 'Advanced front-end development covering React, Next.js, TypeScript, Tailwind CSS, React Native, and best practices for building scalable, performant, and secure user interfaces.'
-}
+
   }
 
 ];
