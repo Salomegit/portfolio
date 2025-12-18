@@ -169,14 +169,14 @@ const HeroSection = () => (
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.8 }}
       >
-        <a
+        {/* <a
           href="https://rxresu.me/sallygithinji72/salome-githinji-swe-cv"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-[#F24333] text-[#F7F4F3] px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-all"
         >
           View Resume
-        </a>
+        </a> */}
 
         {/* Contact Me Button */}
         <a
