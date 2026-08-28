@@ -141,10 +141,9 @@ const HeroSection = () => (
       ))}
     </div>
 
-    <div className="text-center z-10 px-6">
-      {/* Animated Name */}
+    <div className="relative z-10 px-6 w-full max-w-4xl text-center">
       <motion.h1
-        className="text-6xl md:text-8xl font-bold text-[#F7F4F3] mb-4"
+        className="text-5xl md:text-7xl font-bold text-[#F7F4F3] mb-4"
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -152,33 +151,21 @@ const HeroSection = () => (
         Salome Githinji
       </motion.h1>
 
-      {/* Animated Subtitle */}
       <motion.p
         className="text-xl md:text-2xl text-[#d49d8b] mb-8 max-w-2xl mx-auto"
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
       >
-        Building digital solutions that transform ideas into reality
+        AI Engineer & Software Engineer
       </motion.p>
 
-      {/* Animated Buttons */}
       <motion.div
         className="flex justify-center space-x-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.8 }}
       >
-        {/* <a
-          href="https://rxresu.me/sallygithinji72/salome-githinji-swe-cv"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-[#F24333] text-[#F7F4F3] px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-all"
-        >
-          View Resume
-        </a> */}
-
-        {/* Contact Me Button */}
         <a
           href="mailto:githinjisalome72@gmail.com"
           className="border border-[#F24333] text-[#F24333] px-8 py-3 rounded-lg font-medium hover:bg-[#F24333] hover:text-[#F7F4F3] transition-all"
@@ -233,13 +220,17 @@ const AboutSection = () => (
           <div className="text-[#F7F4F3] text-lg leading-relaxed space-y-6">
             {/* Intro paragraph */}
             <p className="text-xl leading-8">
-              I&apos;m a Software Engineer with expertise in building responsive, user-friendly full stack web applications using
-              <span className="font-semibold text-[#38bdf8]"> React.js</span>,
-              <span className="font-semibold text-[#38bdf8]"> Next.js</span>,
-              <span className="font-semibold text-[#38bdf8]"> Django</span>, and
-              <span className="font-semibold text-[#38bdf8]"> Tailwind CSS</span>.
-              I love crafting seamless digital experiences that make ideas and designs come alive.
+              I&apos;m an <span className="font-semibold text-[#38bdf8]">AI Engineer and Software Engineer</span> focused on building practical, elegant systems that connect strong design, reliable engineering, and intelligent automation.
             </p>
+
+            <div className="bg-[#564D4A]/20 p-6 rounded-2xl border-l-4 border-[#F24333]">
+              <h2 className="text-xl font-bold mb-4 text-[#E0E0E0]">AI & systems work</h2>
+              <p className="text-[#F7F4F3] leading-8">
+                I design and build AI-assisted workflows that improve troubleshooting, operational visibility, and decision-making.
+                My work includes <span className="font-semibold text-[#38bdf8]">FastAPI</span> services, <span className="font-semibold text-[#38bdf8]">RAG-powered assistants</span>, semantic retrieval, vector search, prompt safety layers, Redis caching, and secure internal APIs.
+                The goal is always to create systems that are useful, reliable, and grounded in real-world context.
+              </p>
+            </div>
 
             {/* Background section */}
             <div className="bg-[#564D4A]/20 p-6 rounded-2xl border-l-4 border-[#F24333]">
@@ -247,27 +238,26 @@ const AboutSection = () => (
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <span className="text-[#F24333] mr-3 mt-1">•</span>
-                  Skilled in React.js, Next.js, Tailwind CSS, and modern frontend tools.
+                  Skilled in building full-stack web applications with React.js, Next.js, Django, and Tailwind CSS.
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#F24333] mr-3 mt-1">•</span>
-                  Experience with backend development using Django and RESTful APIs.
+                  Strong foundation in backend architecture, API design, and systems thinking.
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#F24333] mr-3 mt-1">•</span>
-                  Strong understanding of responsive design and cross-browser compatibility.
+                  Experienced in translating complex requirements into clean, maintainable, user-centered solutions.
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#F24333] mr-3 mt-1">•</span>
-                  Committed to writing clean, maintainable, and well-documented code.
+                  Passionate about building practical AI systems that connect product thinking with engineering execution.
                 </li>
               </ul>
             </div>
 
             {/* Closing paragraph */}
             <p className="text-xl leading-8 italic border-l-4 border-[#38bdf8] pl-4 py-2">
-              When not coding, I enjoy shooting hoops 🏀, reading 📚, and hiking Kenya&apos;s stunning trails 🥾🏔️
-              adventures that keep me energized and inspired!
+              I enjoy creating digital systems that are both technically strong and genuinely useful in real operations.
             </p>
           </div>
 
@@ -323,6 +313,27 @@ const AboutSection = () => (
                 </ul>
               </div>
               <div className="bg-[#564D4A]/20 p-5 rounded-2xl hover:bg-[#564D4A]/30 transition-all duration-300">
+                <h4 className="text-[#F24333] font-semibold mb-3 text-lg">AI & RAG</h4>
+                <ul className="text-[#F7F4F3] space-y-2">
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    FastAPI
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    RAG Systems
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    Vector Search
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
+                    Prompt Safety & Source Grounding
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-[#564D4A]/20 p-5 rounded-2xl hover:bg-[#564D4A]/30 transition-all duration-300">
                 <h4 className="text-[#F24333] font-semibold mb-3 text-lg">Tools & Platforms</h4>
                 <ul className="text-[#F7F4F3] space-y-2">
                   <li className="flex items-center">
@@ -339,20 +350,7 @@ const AboutSection = () => (
                   </li>
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
-                    Google Cloud
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-[#564D4A]/20 p-5 rounded-2xl hover:bg-[#564D4A]/30 transition-all duration-300">
-                <h4 className="text-[#F24333] font-semibold mb-3 text-lg">Databases</h4>
-                <ul className="text-[#F7F4F3] space-y-2">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
-                    PostgreSQL
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-[#F24333] rounded-full mr-3"></span>
-                    SQLite
+                    Redis
                   </li>
                 </ul>
               </div>
